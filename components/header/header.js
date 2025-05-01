@@ -17,7 +17,7 @@ export function Header() {
         <div className="container-fluid">
           {/* Logo */}
           <Link href="/" className="navbar-brand d-flex align-items-center" onClick={closeMobileMenu}>
-            <img src="/logo.jpg" alt="Logo" width={120} height={40} className="me-2" />
+            <img src="/Logo.jpg" alt="Logo" width={120} height={40} className="me-2" />
           </Link>
 
           {/* Toggler for mobile */}
