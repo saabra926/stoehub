@@ -1,0 +1,28 @@
+/* page.css */
+.login-box {
+  background-color: #323131;
+  width: 100%;
+  max-width: 450px;
+}
+
+.input-bg {
+  background-color: #d1e0ee !important;
+}
+
+.btn-show {
+  background-color: #ff8835;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn2 {
+  background-color: #ff8835;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.checkbox {
+  accent-color: #ff8835;
+}
