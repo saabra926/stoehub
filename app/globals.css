@@ -1,10 +1,203 @@
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+:root {
+  --stoe-bg: #151515;
+  --stoe-surface: #202020;
+  --stoe-surface-2: #2a2928;
+  --stoe-card: #f7f3ee;
+  --stoe-text: #f8f4ef;
+  --stoe-muted: #b8b1aa;
+  --stoe-ink: #191919;
+  --stoe-line: rgba(255, 255, 255, 0.1);
+  --stoe-accent: #ff8835;
+  --stoe-accent-2: #f1bd64;
+  --stoe-danger: #ef5d5d;
+  --stoe-success: #4fb477;
+  --stoe-radius: 8px;
+  --stoe-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  --stoe-page-gutter: clamp(16px, 3vw, 32px);
+  --stoe-content-max: 1180px;
+  --stoe-touch: 44px;
 }
 
-main {
-  flex: 1 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--stoe-text);
+  background:
+    radial-gradient(circle at 15% 5%, rgba(255, 136, 53, 0.18), transparent 28rem),
+    linear-gradient(135deg, #181716 0%, #24211f 48%, #121212 100%);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+.site-main {
+  min-height: calc(100vh - 170px);
+}
+
+.page-shell {
+  width: min(var(--stoe-content-max), calc(100% - var(--stoe-page-gutter) * 2));
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 36px) 0 clamp(42px, 6vw, 56px);
+}
+
+.section-title {
+  color: var(--stoe-text);
+  font-size: clamp(1.75rem, 1.1rem + 2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.section-subtitle {
+  color: var(--stoe-muted);
+  max-width: 680px;
+  margin: 10px auto 0;
+}
+
+.stoe-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 0;
+  border-radius: var(--stoe-radius);
+  padding: 10px 16px;
+  color: #17120f;
+  background: linear-gradient(135deg, var(--stoe-accent), var(--stoe-accent-2));
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.stoe-button:hover {
+  color: #17120f;
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(255, 136, 53, 0.24);
+}
+
+.stoe-button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.4);
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.stoe-button.secondary {
+  color: var(--stoe-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--stoe-line);
+}
+
+.stoe-button.danger {
+  color: #fff;
+  background: var(--stoe-danger);
+}
+
+.stoe-panel {
+  background: rgba(32, 32, 32, 0.86);
+  border: 1px solid var(--stoe-line);
+  border-radius: var(--stoe-radius);
+  box-shadow: var(--stoe-shadow);
+}
+
+.form-control.stoe-input,
+.stoe-input {
+  min-height: 46px;
+  color: var(--stoe-text);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--stoe-radius);
+}
+
+.form-control.stoe-input:focus,
+.stoe-input:focus {
+  color: var(--stoe-text);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 136, 53, 0.76);
+  box-shadow: 0 0 0 0.2rem rgba(255, 136, 53, 0.16);
+}
+
+.form-control.stoe-input::placeholder,
+.stoe-input::placeholder {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.form-control.stoe-input::-webkit-input-placeholder,
+.stoe-input::-webkit-input-placeholder {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.form-control.stoe-input::-moz-placeholder,
+.stoe-input::-moz-placeholder {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.Toastify__toast-container {
+  width: min(420px, calc(100vw - 24px));
+}
+
+.Toastify__toast.stoe-toast {
+  min-height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--stoe-radius);
+  padding: 14px 16px;
+  color: var(--stoe-text);
+  background: rgba(27, 26, 25, 0.96);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+.stoe-toast-progress {
+  background: linear-gradient(90deg, var(--stoe-accent), var(--stoe-accent-2));
+}
+
+@media (max-width: 991px) {
+  .section-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 575px) {
+  :root {
+    --stoe-page-gutter: 14px;
+  }
+
+  .Toastify__toast-container {
+    top: 76px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .stoe-button {
+    min-height: var(--stoe-touch);
+  }
 }

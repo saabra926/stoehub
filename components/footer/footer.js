@@ -1,122 +1,76 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import "./footer.css";
+
+const fallbackContact = {
+  email: "rdawood379@gmail.com",
+  whatsappUrl: "https://wa.me/923144885177",
+  whatsappDisplay: "+923144885177",
+  location: "Faisalabad, Pakistan",
+};
+
 export function Footer() {
+  const [contact, setContact] = useState(fallbackContact);
 
+  useEffect(() => {
+    const loadContact = () => {
+      fetch("/api/site/contact", { cache: "no-store" })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data?.contact) {
+            setContact(data.contact);
+          }
+        })
+        .catch(() => {});
+    };
 
+    loadContact();
+    window.addEventListener("shoehub-contact-changed", loadContact);
+    return () => window.removeEventListener("shoehub-contact-changed", loadContact);
+  }, []);
 
-    return <div>
+  return (
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <section className="footer-brand">
+          <h2>StepHub</h2>
+          <p>High-quality shoes for daily wear, training, and street style.</p>
+        </section>
 
+        <section>
+          <h3>Quick Links</h3>
+          <Link href="/">Home</Link>
+          <Link href="/products">Products</Link>
+          <Link href="/cart">Cart</Link>
+          <Link href="/settings">Settings</Link>
+        </section>
 
+        <section>
+          <h3>Account</h3>
+          <Link href="/login">Login</Link>
+          <Link href="/signup">Signup</Link>
+          <Link href="/forgot-password">Forgot Password</Link>
+          <Link href="/admin">Admin Panel</Link>
+        </section>
 
-  <footer className="text-center text-lg-start  text-muted">
-    {/* Section: Social media */}
-    {/* Section: Social media */}
-    {/* Section: Links  */}
-    <section className="">
-      <div className="container text-center text-md-start mt-5">
-        {/* Grid row */}
-        <div className="row mt-3">
-          {/* Grid column */}
-          <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            {/* Content */}
-            <h6 className="text-uppercase text-white fw-bold mb-4">
-              <i className="text-white me-3" />
-              About Us
-            </h6>
-            <p className="text-white">
-            We provide high-quality shoes for all your needs.
-            </p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase text-white fw-bold mb-4">quick links</h6>
-            <p>
-              <a href="https://www.instagram.com/_vibe_with_dawood?igsh=MW5lenhobzZxcHM4Zg==" className="text-white">
-                Instagram
-              </a>
-            </p>
-            <p>
-              <a href="https://github.com/Dawood0426/weather-app" className="text-white">
-                Github
-              </a>
-            </p>
-            <p>
-              <a href="https://wa.me/03144885177" target="_blank" className="text-white">
-                Whatsapp
-              </a>
-            </p>
-            <p>
-              <a href="https://www.facebook.com/itx.rajpootdawood" className="text-white">
-                Facebook
-              </a>
-            </p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase text-white fw-bold mb-4">Services</h6>
-            <p>
-              <Link href="/" className="text-white">
-                Home
-              </Link>
-            </p>
-            <p>
-              <Link href="/login" className="text-white">
-                Login
-              </Link>
-            </p>
-            <p>
-              <Link href="/signup" className="text-white">
-                Signup
-              </Link>
-            </p>
-            <p>
-              <Link href="cart" className="text-white">
-               Cart
-              </Link>
-            </p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase text-white fw-bold mb-4">Contact</h6>
-            <p className="text-white">
-              <i className="text-white  me-3" /> Faisalabad, GM Abad, PK
-            </p>
-            <p className="text-white">
-              <i className="fas fa-envelope me-3" />
-              rdawood379@gmail.com
-            </p>
-            <p className="text-white">
-              <i className="fas fa-phone me-3" /> +92 314 4885177
-            </p>
-            <p className="text-white">
-              <i className="fas fa-print me-3" /> +92 314 4885177
-            </p>
-          </div>
-          {/* Grid column */}
-        </div>
-        {/* Grid row */}
+        <section>
+          <h3>Contact</h3>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          {contact.whatsappUrl ? (
+            <a href={contact.whatsappUrl} target="_blank" rel="noreferrer">
+              WhatsApp
+            </a>
+          ) : null}
+          <span>{contact.location}</span>
+        </section>
       </div>
-    </section>
-    {/* Section: Links  */}
-    {/* Copyright */}
-    <div
-      className="text-center text-white p-4"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
-      >
-      © 2025 Copyright:
-      <a href="https://wa.me/03144885177" target="_blank">
-         Dawood Rehman
-      </a>
-    </div>
-    {/* Copyright */}
-  </footer>
 
-        </div>
-
-
+      <div className="footer-bottom">
+        <span>© 2026 StepHub.</span>
+        <a href="https://github.com/dawood-rehman/stoehub" target="_blank" rel="noreferrer">Dawood Rehman</a>
+      </div>
+    </footer>
+  );
 }

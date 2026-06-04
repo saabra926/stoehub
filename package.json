@@ -1,5 +1,5 @@
 {
-  "name": "stoehub",
+  "name": "stephub",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,17 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.7.0",
-    "next": "15.1.7",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.3",
+    "next": "^15.5.19",
+    "nodemailer": "^8.0.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-toastify": "^11.0.5"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
   }
 }

@@ -1,0 +1,75 @@
+.settings-page {
+  display: grid;
+  gap: 22px;
+}
+
+.settings-heading {
+  text-align: center;
+}
+
+.settings-heading p {
+  margin: 0 0 8px;
+  color: var(--stoe-accent-2);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.settings-panel {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.settings-grid label {
+  display: grid;
+  gap: 8px;
+  color: var(--stoe-text);
+  font-weight: 700;
+}
+
+.settings-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--stoe-line);
+}
+
+.settings-actions span,
+.settings-muted,
+.settings-empty p {
+  color: var(--stoe-muted);
+}
+
+.settings-empty {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.settings-empty h1 {
+  margin: 0;
+  color: var(--stoe-text);
+  font-weight: 900;
+}
+
+@media (max-width: 767px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

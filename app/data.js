@@ -1,6 +1,6 @@
 export const Products = [
     { id: 1, src: "p1.jpg", brand: "Urban Gland", about: "Comfortable sneaker for daily routine.", price: 23.4 },
-    { id: 2, src: "p2.jpg", brand: "pro Runner 3000", about: "High-Performance shoes for pro runners.", price: 28.4 },
+    { id: 2, src: "p2.jpg", brand: "Pro Runner 3000", about: "High-Performance shoes for pro runners.", price: 28.4 },
     { id: 3, src: "p3.jpg", brand: "Classic Comfort", about: "Timeless design with modern cushioning.", price: 23.4 },
     { id: 4, src: "p4.jpg", brand: "Trailblazer Sneakers", about: "Lightweight and durable trail-running shoes. ", price: 34.6 },
     { id: 5, src: "p5.jpg", brand: "Elite Walkers", about: "Perfect for long walk and all-day comfort.", price: 31.4 },
